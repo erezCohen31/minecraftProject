@@ -2,7 +2,15 @@ const main = document.querySelector("main");
 const viewport = document.getElementById("viewport");
 const tollEvent = document.getElementById("tools");
 let toolid = "";
-const toolsKit = { shovel: "dirt-tile" };
+
+const toolsKit = { 
+  shovel: ["dirt-tile", "dirtTop-tile"],
+  axe: ["trunk-tile"],
+  hoe: ["leaf-tile"],
+  pickaxe: ["rock-tile"]
+};
+
+
 let index = 0;
 
 // === Tile symbols ===
@@ -132,20 +140,19 @@ function loadMap(matrixMap) {
 /**
  * Click to decorate (turn any tile into sky)
  */
+
 function decorateOnClick() {
   main.addEventListener("click", (event) => {
     const target = event.target;
-    const classname = event.target.classList;
+    const classname = target.classList;
 
-    if (toolsKit[toolid] == classname) {
-      //remove all class
+    const validTiles = toolsKit[toolid];
+    if (validTiles.some(tile => classname.contains(tile))) {
       target.className = "";
-      // add the good class
       target.classList.add("sky-tile");
     }
   });
 }
-
 /**
  * Get random integer in range [min, max]
  */
