@@ -1,5 +1,10 @@
 const main = document.querySelector("main");
 const tollEvent = document.getElementById("tools");
+const storageDirt = document.getElementById("dirt");
+const storageDirtTop = document.getElementById("dirtTop");
+const storageLeaf = document.getElementById("leaf");
+const storageTrunk = document.getElementById("trunk");
+
 let toolid = "";
 
 const toolsKit = {
@@ -14,6 +19,12 @@ const storageTiles = {
   "dirtTop-tile": 0,
   "trunk-tile": 0,
   "leaf-tile": 0,
+};
+const storageElements = {
+  "dirt-tile": document.getElementById("dirt"),
+  "dirtTop-tile": document.getElementById("dirtTop"),
+  "trunk-tile": document.getElementById("trunk"),
+  "leaf-tile": document.getElementById("leaf"),
 };
 
 let index = 0;
@@ -77,7 +88,6 @@ function buildTree(map, startRow, startCol) {
   const trunkHeight = getRandomInt(3, 5); // trunk height
   const canopyHeight = 6; // fixed canopy height
   const baseWidth = 6; // base width
-  const topWidth = 3; // top width
 
   // === Trunk ===
   for (let i = 0; i < trunkHeight; i++) {
@@ -155,9 +165,15 @@ function decorateOnClick() {
       target.className = "";
       target.classList.add("sky-tile");
       storageTiles[classname]++;
-      console.log(storageTiles);
+      displayStorage(classname);
     }
   });
+}
+
+function displayStorage(className) {
+  storageElements[className].style.display = "inline-block";
+  storageElements[className].textContent = storageTiles[className];
+  storageElements[className].style.color = "white";
 }
 /**
  * Get random integer in range [min, max]
