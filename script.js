@@ -1,27 +1,27 @@
 const main = document.querySelector("main");
+const viewport = document.getElementById("viewport");
 let index = 0;
 
 // Symbols
-const d = "d";
-const s = "s";
-const t = "t";
-const l = "l";
-const dt = "dt";
+const d = "d",
+  s = "s",
+  t = "t",
+  l = "l",
+  dt = "dt";
 
-// Fixed map size
-const FIXED_COLS = 50;
-const FIXED_ROWS = 20;
+// Map size
+const MAP_COLS = 50;
+const MAP_ROWS = 30;
 
-/**
- * Generates a fixed-size map
- */
+const TILE_SIZE = 32;
+
 function generateMap() {
   const map = [];
-  for (let i = 0; i < FIXED_ROWS; i++) {
+  for (let i = 0; i < MAP_ROWS; i++) {
     const row = [];
-    for (let j = 0; j < FIXED_COLS; j++) {
-      if (i >= FIXED_ROWS - 5) row.push(d);
-      else if (i >= FIXED_ROWS - 3) row.push(dt);
+    for (let j = 0; j < MAP_COLS; j++) {
+      if (i >= MAP_ROWS - 13) row.push(d);
+      else if (i >= MAP_ROWS - 14) row.push(dt);
       else row.push(s);
     }
     map.push(row);
@@ -29,10 +29,7 @@ function generateMap() {
   return map;
 }
 
-/**
- * Loads the map into the DOM
- */
-function loadMap(matrixMap, tileWidth, tileHeight) {
+function loadMap(matrixMap) {
   main.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
@@ -50,8 +47,8 @@ function loadMap(matrixMap, tileWidth, tileHeight) {
       tile.id = `tile-${index++}`;
       tile.style.gridRow = i + 1;
       tile.style.gridColumn = j + 1;
-      tile.style.width = `${tileWidth}px`;
-      tile.style.height = `${tileHeight}px`;
+      tile.style.width = `${TILE_SIZE}px`;
+      tile.style.height = `${TILE_SIZE}px`;
 
       const cls = tileClasses[matrixMap[i][j]];
       if (cls) tile.classList.add(cls);
@@ -61,29 +58,28 @@ function loadMap(matrixMap, tileWidth, tileHeight) {
   }
 
   main.appendChild(fragment);
+
+  main.style.gridTemplateColumns = `repeat(${MAP_COLS}, ${TILE_SIZE}px)`;
+  main.style.gridAutoRows = `${TILE_SIZE}px`;
 }
 
-/**
- * Initialize map: fixed rows/cols, tiles stretch to fill screen
- */
-function init() {
-  const tileWidth = window.innerWidth / FIXED_COLS;
-  const tileHeight = window.innerHeight / FIXED_ROWS;
+const map = generateMap();
+loadMap(map);
 
-  const map = generateMap();
-
-  main.style.display = "grid";
-  main.style.gridTemplateColumns = `repeat(${FIXED_COLS}, ${tileWidth}px)`;
-  main.style.gridAutoRows = `${tileHeight}px`;
-
-  loadMap(map, tileWidth, tileHeight);
-}
-
-// Initial load
-init();
-
-// Update on window resize
-window.addEventListener("resize", () => {
-  index = 0;
-  init();
+window.addEventListener("keydown", (e) => {
+  const scrollStep = TILE_SIZE;
+  switch (e.key) {
+    case "ArrowLeft":
+      viewport.scrollLeft -= scrollStep;
+      break;
+    case "ArrowRight":
+      viewport.scrollLeft += scrollStep;
+      break;
+    case "ArrowUp":
+      viewport.scrollTop -= scrollStep;
+      break;
+    case "ArrowDown":
+      viewport.scrollTop += scrollStep;
+      break;
+  }
 });
