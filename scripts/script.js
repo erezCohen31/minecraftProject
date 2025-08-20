@@ -1,5 +1,8 @@
 const main = document.querySelector("main");
 const viewport = document.getElementById("viewport");
+const tollEvent = document.getElementById("tools");
+let toolid = "";
+const toolsKit = { shovel: "dirt-tile" };
 let index = 0;
 
 // Symbols
@@ -63,20 +66,28 @@ function loadMap(matrixMap) {
   main.style.gridAutoRows = `${TILE_SIZE}px`;
 }
 
-const map = generateMap();
-loadMap(map);
-
-
 function decorateOnClick() {
-  const main = document.querySelector('main');
-
-  main.addEventListener('click', (event) => {
+  main.addEventListener("click", (event) => {
     const target = event.target;
-    target.classList.remove('dirt-tile')
-    target.classList.add('sky-tile');
+    const classname = event.target.classList;
+
+    if (toolsKit[toolid] == classname) {
+      //remove all class
+      target.className = "";
+      // add the good class
+      target.classList.add("sky-tile");
+    }
   });
 }
 
+const map = generateMap();
+loadMap(map);
 decorateOnClick();
 
-
+function takeToolId() {
+  tollEvent.addEventListener("click", (e) => {
+    toolid = e.target.id;
+    console.log(toolid);
+  });
+}
+takeToolId();
