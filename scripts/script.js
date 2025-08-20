@@ -2,7 +2,13 @@ const main = document.querySelector("main");
 const viewport = document.getElementById("viewport");
 const tollEvent = document.getElementById("tools");
 let toolid = "";
-const toolsKit = { shovel: "dirt-tile" };
+
+// the object for matching the tool=style-class
+const toolsKit = {
+  shovel: "dirt-tile",
+  Axe: "trunk-tile",
+};
+
 let index = 0;
 
 // Symbols
@@ -74,20 +80,23 @@ function decorateOnClick() {
     if (toolsKit[toolid] == classname) {
       //remove all class
       target.className = "";
+
       // add the good class
       target.classList.add("sky-tile");
     }
   });
 }
 
-const map = generateMap();
-loadMap(map);
-decorateOnClick();
-
+// Listens for a click on a tool and updates 'toolid' with the selected tool's id
 function takeToolId() {
   tollEvent.addEventListener("click", (e) => {
     toolid = e.target.id;
-    console.log(toolid);
   });
 }
+
+
+const map = generateMap();
+loadMap(map);
+decorateOnClick();
 takeToolId();
+
