@@ -1,5 +1,33 @@
-.sky-tile{
-    width: 100px;
-    height: 100px;
-    background-color: aqua;
+.sky-tile {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+}
+
+.dirt-tile {
+  background-image: url("./asserts/dirt.jpg");
+  width: 100px;
+  height: 100px;
+  background-size: cover; 
+}
+
+.dirtTop-tile {
+  background-image: url("./asserts/dirtTop.jpg");
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+}
+
+.trunk-tile {
+  background-image: url("./asserts/trunk.jpg");
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+}
+
+.leaf-tile {
+  background-image: url("./asserts/leaf.jpj.jpg");
+  width: 100px;
+  height: 100px;
+  background-size: cover;
 }
