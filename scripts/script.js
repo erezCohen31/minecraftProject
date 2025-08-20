@@ -1,11 +1,8 @@
 const main = document.querySelector("main");
 const tollEvent = document.getElementById("tools");
-const storageDirt = document.getElementById("dirt");
-const storageDirtTop = document.getElementById("dirtTop");
-const storageLeaf = document.getElementById("leaf");
-const storageTrunk = document.getElementById("trunk");
-
+const storage = document.querySelector(".storege");
 let toolid = "";
+let currentClassTile = "";
 
 const toolsKit = {
   shovel: ["dirt-tile", "dirtTop-tile"],
@@ -166,25 +163,49 @@ function decorateOnClick() {
       target.classList.add("sky-tile");
       storageTiles[classname]++;
       displayStorage(classname);
+    } else if (classname === "sky-tile" && storageTiles[currentClassTile] > 0) {
+      target.className = "";
+      target.classList.add(currentClassTile);
+      storageTiles[currentClassTile]--;
+      displayStorage(currentClassTile);
+      console.log(currentClassTile);
     }
+  });
+}
+function takeToStorage() {
+  storage.addEventListener("click", (e) => {
+    const tile = e.target;
+    const className = tile.className;
+    currentClassTile = className;
+    toolid = "";
+    console.log("tile", currentClassTile);
+    setCursor(tile.id);
   });
 }
 
 function displayStorage(className) {
-  storageElements[className].style.display = "inline-block";
-  storageElements[className].textContent = storageTiles[className];
-  storageElements[className].style.color = "white";
+  if (storageTiles[className] > 0) {
+    storageElements[className].style.display = "inline-block";
+    storageElements[className].textContent = storageTiles[className];
+    storageElements[className].style.color = "white";
+  } else {
+    storageElements[className].style.display = "none";
+  }
 }
+
 /**
  * Get random integer in range [min, max]
  */
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 function takeToolId() {
   tollEvent.addEventListener("click", (e) => {
     toolid = e.target.id;
     console.log(toolid);
+    setCursor(toolid);
+    currentClassTile = "";
   });
 }
 
@@ -194,8 +215,41 @@ function addInstorage(classTile) {
 function removeToStorage(classTile) {
   storageTiles[classTile]--;
 }
+function setCursor(toolOrTile) {
+  document.body.className = "";
+
+  switch (toolOrTile) {
+    case "axe":
+      document.body.classList.add("cursor-axe");
+      break;
+    case "shovel":
+      document.body.classList.add("cursor-shovel");
+      break;
+    case "hoe":
+      document.body.classList.add("cursor-hoe");
+      break;
+    case "pickaxe":
+      document.body.classList.add("cursor-pickaxe");
+    case "dirt":
+      document.body.classList.add("cursor-dirt");
+      break;
+    case "dirtTop":
+      document.body.classList.add("cursor-dirtTop");
+      break;
+    case "trunk":
+      document.body.classList.add("cursor-trunk");
+      break;
+    case "leaf":
+      document.body.classList.add("cursor-leaf");
+      break;
+    default:
+      document.body.classList.add("cursor-default");
+  }
+}
+
 // === Run ===
 const map = generateMap();
 loadMap(map);
 decorateOnClick();
 takeToolId();
+takeToStorage();
