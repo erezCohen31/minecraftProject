@@ -1,0 +1,53 @@
+<<<<<<< HEAD
+/* Reset margins and padding to avoid scrollbars */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+#viewport {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto; /* allow scrolling */
+}
+main {
+  display: grid; /* We'll use CSS Grid to place tiles */
+}
+
+div {
+  /* box-sizing: border-box includes border and padding inside the element */
+  box-sizing: border-box;
+}
+div:hover {
+  border: 1px solid black;
+}
+
+/* Tiles styles */
+.sky-tile {
+  background-color: aqua;
+}
+
+.dirt-tile {
+  background-image: url("./assets/dirt.jpg");
+  background-size: cover;
+}
+
+.dirtTop-tile {
+  background-image: url("./assets/dirtTop.jpg");
+  background-size: cover;
+}
+
+.trunk-tile {
+  background-image: url("./assets/trunk.jpg");
+  background-size: cover;
+}
+
+.leaf-tile {
+  background-image: url("./assets/leaf.jpg");
+  background-size: cover;
+}
+=======
+>>>>>>> origin/main
