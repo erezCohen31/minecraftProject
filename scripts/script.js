@@ -63,17 +63,17 @@ function loadMap(matrixMap) {
   main.style.gridAutoRows = `${TILE_SIZE}px`;
 }
 
-const map = generateMap();
-loadMap(map);
-
-
 function decorateOnClick() {
-  const main = document.querySelector('main');
-
-  main.addEventListener('click', (event) => {
+  main.addEventListener("click", (event) => {
     const target = event.target;
-    target.classList.add('sky');
+    //remove all class
+    target.className = "";
+
+    // add the good class
+    target.classList.add("sky-tile");
   });
 }
 
-
+const map = generateMap();
+loadMap(map);
+decorateOnClick();
