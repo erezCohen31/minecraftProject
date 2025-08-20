@@ -42,3 +42,23 @@ div:hover {
   background-image: url("../assets/imges/leaf.jpg");
   background-size: cover;
 }
+#tools {
+  position: absolute; 
+  top: 20px;  
+  left: 20px; 
+  display: flex; 
+  flex-direction: column;
+  gap: 10px;  
+}
+button {
+  background-color: #00ffff; 
+  border: none;
+  padding: 10px; 
+  
+}
+.img-tools{
+  width: 25px;
+  height: 25px;
+ 
+}
+
