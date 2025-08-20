@@ -14,6 +14,12 @@ div {
   width: 32px;
   height: 32px;
   background-size: cover;
+  /* box-sizing: border-box includes border and padding inside the element */
+  box-sizing: border-box;
+}
+div:hover {
+  border: 1px solid black;
+
 }
 
 /* Tiles styles */
