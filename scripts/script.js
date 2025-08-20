@@ -149,12 +149,13 @@ function loadMap(matrixMap) {
 function decorateOnClick() {
   main.addEventListener("click", (event) => {
     const target = event.target;
-    const classname = target.classList;
-
+    const classname = target.className;
     const validTiles = toolsKit[toolid];
-    if (validTiles.some((tile) => classname.contains(tile))) {
+    if (validTiles && validTiles.some((tile) => classname === tile)) {
       target.className = "";
       target.classList.add("sky-tile");
+      storageTiles[classname]++;
+      console.log(storageTiles);
     }
   });
 }
