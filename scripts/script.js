@@ -5,33 +5,96 @@ let toolid = "";
 const toolsKit = { shovel: "dirt-tile" };
 let index = 0;
 
-// Symbols
-const d = "d",
-  s = "s",
-  t = "t",
-  l = "l",
-  dt = "dt";
+// === Tile symbols ===
+const d = "d", // dirt
+  s = "s", // sky
+  t = "t", // trunk
+  l = "l", // leaf
+  dt = "dt"; // dirt top
 
-// Map size
+// === Map configuration ===
 const MAP_COLS = 50;
 const MAP_ROWS = 30;
-
 const TILE_SIZE = 32;
 
+/**
+ * Generate the base map matrix
+ */
 function generateMap() {
+  const skyRow = (MAP_ROWS / 3) * 1.2;
   const map = [];
+
   for (let i = 0; i < MAP_ROWS; i++) {
     const row = [];
     for (let j = 0; j < MAP_COLS; j++) {
-      if (i >= MAP_ROWS - 13) row.push(d);
-      else if (i >= MAP_ROWS - 14) row.push(dt);
-      else row.push(s);
+      if (i < skyRow) {
+        row.push(s);
+      } else if (i < skyRow + 1) {
+        row.push(dt);
+      } else {
+        row.push(d);
+      }
     }
     map.push(row);
   }
+
+  generateTrees(map, skyRow);
   return map;
 }
 
+/**
+ * Generate trees along the ground
+ */
+function generateTrees(map, skyRow) {
+  let col = 2;
+
+  while (col < MAP_COLS - 5) {
+    // Build one tree and get its width
+    const treeWidth = buildTree(map, skyRow - 1, col);
+
+    // Move to the next tree position (tree width + random spacing)
+    col += treeWidth + getRandomInt(2, 5);
+  }
+}
+
+/**
+ * Build a tree with trunk + canopy
+ */
+function buildTree(map, startRow, startCol) {
+  const trunkHeight = getRandomInt(3, 5); // trunk height
+  const canopyHeight = 6; // fixed canopy height
+  const baseWidth = 6; // base width
+  const topWidth = 3; // top width
+
+  // === Trunk ===
+  for (let i = 0; i < trunkHeight; i++) {
+    if (startRow - i >= 0) {
+      map[startRow - i][startCol] = t;
+    }
+  }
+
+  // === Pyramid canopy ===
+  for (let r = 0; r < canopyHeight; r++) {
+    const row = startRow - trunkHeight - r;
+    if (row < 0) break;
+
+    // Decrease width every 2 rows
+    const halfWidth = Math.floor(baseWidth / 2 - Math.floor(r / 2));
+
+    for (let c = -halfWidth; c <= halfWidth; c++) {
+      const col = startCol + c;
+      if (col >= 0 && col < map[0].length) {
+        map[row][col] = l;
+      }
+    }
+  }
+
+  return baseWidth; // return tree width for spacing
+}
+
+/**
+ * Render the map into the DOM
+ */
 function loadMap(matrixMap) {
   main.innerHTML = "";
   const fragment = document.createDocumentFragment();
@@ -66,6 +129,9 @@ function loadMap(matrixMap) {
   main.style.gridAutoRows = `${TILE_SIZE}px`;
 }
 
+/**
+ * Click to decorate (turn any tile into sky)
+ */
 function decorateOnClick() {
   main.addEventListener("click", (event) => {
     const target = event.target;
@@ -80,6 +146,14 @@ function decorateOnClick() {
   });
 }
 
+/**
+ * Get random integer in range [min, max]
+ */
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// === Run ===
 const map = generateMap();
 loadMap(map);
 decorateOnClick();
