@@ -72,8 +72,11 @@ function decorateOnClick() {
 
   main.addEventListener('click', (event) => {
     const target = event.target;
-    target.classList.add('sky');
+    target.classList.remove('dirt-tile')
+    target.classList.add('sky-tile');
   });
 }
+
+decorateOnClick();
 
 
