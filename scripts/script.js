@@ -9,7 +9,7 @@ const l = "l";
 const dt = "dt";
 
 // Fixed map size
-const FIXED_COLS = 50;
+const FIXED_COLS = 45;
 const FIXED_ROWS = 20;
 
 /**
