@@ -1,58 +1,47 @@
 const main = document.querySelector("main");
 let index = 0;
 
-// Define symbols
-const d = "d"; // dirt
-const s = "s"; // sky
-const t = "t"; // trunk
-const l = "l"; // leaf
-const dt = "dt"; // dirt top
+// Symbols
+const d = "d";
+const s = "s";
+const t = "t";
+const l = "l";
+const dt = "dt";
 
-// Tile size in pixels
-const tileSize = 32;
+// Fixed map size
+const FIXED_COLS = 50;
+const FIXED_ROWS = 20;
 
 /**
- * Generates an empty map (sky + ground) based on the number of rows and columns
+ * Generates a fixed-size map
  */
-function generateMap(rows, cols) {
+function generateMap() {
   const map = [];
-
-  for (let i = 0; i < rows; i++) {
+  for (let i = 0; i < FIXED_ROWS; i++) {
     const row = [];
-    for (let j = 0; j < cols; j++) {
-      if (i >= rows - 2) {
-        row.push(d); // last 2 rows = ground
-      } else {
-        row.push(s); // sky
-      }
+    for (let j = 0; j < FIXED_COLS; j++) {
+      if (i >= FIXED_ROWS - 5) row.push(d);
+      else if (i >= FIXED_ROWS - 3) row.push(dt);
+      else row.push(s);
     }
     map.push(row);
   }
-
-  // Example: add a small tree in the middle
-  const midRow = Math.floor(rows / 2);
-  const midCol = Math.floor(cols / 2);
-  if (rows > 4 && cols > 4) {
-    map[midRow][midCol] = l;
-    map[midRow + 1][midCol] = t;
-  }
-
   return map;
 }
 
 /**
  * Loads the map into the DOM
  */
-function loadMap(matrixMap) {
-  main.innerHTML = ""; // reset
+function loadMap(matrixMap, tileWidth, tileHeight) {
+  main.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
   const tileClasses = {
-    [d]: "dirt-tile",
-    [s]: "sky-tile",
-    [t]: "trunk-tile",
-    [l]: "leaf-tile",
-    [dt]: "dirtTop-tile",
+    d: "dirt-tile",
+    s: "sky-tile",
+    t: "trunk-tile",
+    l: "leaf-tile",
+    dt: "dirtTop-tile",
   };
 
   for (let i = 0; i < matrixMap.length; i++) {
@@ -61,6 +50,8 @@ function loadMap(matrixMap) {
       tile.id = `tile-${index++}`;
       tile.style.gridRow = i + 1;
       tile.style.gridColumn = j + 1;
+      tile.style.width = `${tileWidth}px`;
+      tile.style.height = `${tileHeight}px`;
 
       const cls = tileClasses[matrixMap[i][j]];
       if (cls) tile.classList.add(cls);
@@ -73,24 +64,25 @@ function loadMap(matrixMap) {
 }
 
 /**
- * Responsive initialization
+ * Initialize map: fixed rows/cols, tiles stretch to fill screen
  */
 function init() {
-  const cols = Math.floor(window.innerWidth / tileSize);
-  const rows = Math.floor(window.innerHeight / tileSize);
-  const map = generateMap(rows, cols);
+  const tileWidth = window.innerWidth / FIXED_COLS;
+  const tileHeight = window.innerHeight / FIXED_ROWS;
 
-  // Set up the main CSS grid
+  const map = generateMap();
+
   main.style.display = "grid";
-  main.style.gridTemplateColumns = `repeat(${cols}, ${tileSize}px)`;
-  main.style.gridAutoRows = `${tileSize}px`;
+  main.style.gridTemplateColumns = `repeat(${FIXED_COLS}, ${tileWidth}px)`;
+  main.style.gridAutoRows = `${tileHeight}px`;
 
-  loadMap(map);
+  loadMap(map, tileWidth, tileHeight);
 }
 
+// Initial load
 init();
 
-// Optional: regenerate map when window is resized
+// Update on window resize
 window.addEventListener("resize", () => {
   index = 0;
   init();
