@@ -1,5 +1,8 @@
 const main = document.querySelector("main");
 const viewport = document.getElementById("viewport");
+const tollEvent = document.getElementById("tools");
+let toolid = "";
+const toolsKit = { shovel: "dirt-tile" };
 let index = 0;
 
 // Symbols
@@ -66,14 +69,25 @@ function loadMap(matrixMap) {
 function decorateOnClick() {
   main.addEventListener("click", (event) => {
     const target = event.target;
-    //remove all class
-    target.className = "";
+    const classname = event.target.classList;
 
-    // add the good class
-    target.classList.add("sky-tile");
+    if (toolsKit[toolid] == classname) {
+      //remove all class
+      target.className = "";
+      // add the good class
+      target.classList.add("sky-tile");
+    }
   });
 }
 
 const map = generateMap();
 loadMap(map);
 decorateOnClick();
+
+function takeToolId() {
+  tollEvent.addEventListener("click", (e) => {
+    toolid = e.target.id;
+    console.log(toolid);
+  });
+}
+takeToolId();
