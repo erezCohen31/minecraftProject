@@ -46,7 +46,7 @@ function generateMap() {
  * Generate trees along the ground
  */
 function generateTrees(map, skyRow) {
-  let col = 2;
+  let col = 5;
 
   while (col < MAP_COLS - 5) {
     // Build one tree and get its width
