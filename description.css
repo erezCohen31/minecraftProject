@@ -6,6 +6,7 @@ h1{
     color: rgb(86, 78, 78);
     font-size:xx-large;
     text-align: center;
+    margin-right: 70px;
 }
 
 #des{
@@ -13,4 +14,6 @@ h1{
     font-size: large;
     margin-top: 60px;
     margin-left: 360px;
+    font-family: 'Georgia', serif;
+
 }
