@@ -15,7 +15,6 @@ div {
 }
 div:hover {
   border: 1px solid black;
-
 }
 
 /* Tiles styles */
@@ -42,24 +41,22 @@ div:hover {
   background-image: url("../assets/imges/leaf.jpg");
   background-size: cover;
 }
+
 #tools {
-  position: absolute; 
-  top: 20px;  
-  left: 20px; 
-  display: flex; 
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  display: flex;
   flex-direction: column;
   gap: 10px; 
-  border: 2px solid black;
+
 }
 button {
-  background-color: #00ffff; 
+  background-color: #00ffff;
   border: none;
-  padding: 10px; 
-  
+  padding: 10px;
 }
-.img-tools{
+.img-tools {
   width: 25px;
   height: 25px;
- 
 }
-
