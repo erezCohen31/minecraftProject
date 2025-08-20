@@ -3,17 +3,10 @@ body,
 html {
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 main {
-  display: grid; /* We'll use CSS Grid to place tiles */
-}
-
-div {
-  width: 32px;
-  height: 32px;
-  background-size: cover;
+  display: grid; /* Initial grid display */
 }
 
 /* Tiles styles */
@@ -23,16 +16,20 @@ div {
 
 .dirt-tile {
   background-image: url("./assets/dirt.jpg");
+  background-size: cover;
 }
 
 .dirtTop-tile {
   background-image: url("./assets/dirtTop.jpg");
+  background-size: cover;
 }
 
 .trunk-tile {
   background-image: url("./assets/trunk.jpg");
+  background-size: cover;
 }
 
 .leaf-tile {
   background-image: url("./assets/leaf.jpg");
+  background-size: cover;
 }
