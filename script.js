@@ -9,7 +9,7 @@ const l = "l"; // leaf
 const dt = "dt"; // dirt top
 
 // Tile size in pixels
-const tileSize = 18;
+const tileSize = 32;
 
 /**
  * Generates an empty map (sky + ground) based on the number of rows and columns

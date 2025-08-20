@@ -1,33 +1,38 @@
+/* Reset margins and padding to avoid scrollbars */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+main {
+  display: grid; /* We'll use CSS Grid to place tiles */
+}
+
+div {
+  width: 32px;
+  height: 32px;
+  background-size: cover;
+}
+
+/* Tiles styles */
 .sky-tile {
-  width: 100px;
-  height: 100px;
   background-color: aqua;
 }
 
 .dirt-tile {
-  background-image: url("./asserts/dirt.jpg");
-  width: 100px;
-  height: 100px;
-  background-size: cover; 
+  background-image: url("./assets/dirt.jpg");
 }
 
 .dirtTop-tile {
-  background-image: url("./asserts/dirtTop.jpg");
-  width: 100px;
-  height: 100px;
-  background-size: cover;
+  background-image: url("./assets/dirtTop.jpg");
 }
 
 .trunk-tile {
-  background-image: url("./asserts/trunk.jpg");
-  width: 100px;
-  height: 100px;
-  background-size: cover;
+  background-image: url("./assets/trunk.jpg");
 }
 
 .leaf-tile {
-  background-image: url("./asserts/leaf.jpj.jpg");
-  width: 100px;
-  height: 100px;
-  background-size: cover;
+  background-image: url("./assets/leaf.jpg");
 }
