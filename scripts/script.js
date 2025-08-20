@@ -1,5 +1,4 @@
 const main = document.querySelector("main");
-const viewport = document.getElementById("viewport");
 const tollEvent = document.getElementById("tools");
 let toolid = "";
 const toolsKit = { shovel: "dirt-tile" };
