@@ -1,9 +1,9 @@
 const main = document.querySelector("main");
 const tollEvent = document.getElementById("tools");
 const storageDirt = document.getElementById("dirt");
-const storageDirtTop = document.getElementById("dirt");
-const storageLeaf = document.getElementById("dirt");
-const storageTrunk = document.getElementById("dirt");
+const storageDirtTop = document.getElementById("dirtTop");
+const storageLeaf = document.getElementById("leaf");
+const storageTrunk = document.getElementById("trunk");
 
 let toolid = "";
 
@@ -19,6 +19,12 @@ const storageTiles = {
   "dirtTop-tile": 0,
   "trunk-tile": 0,
   "leaf-tile": 0,
+};
+const storageElements = {
+  "dirt-tile": document.getElementById("dirt"),
+  "dirtTop-tile": document.getElementById("dirtTop"),
+  "trunk-tile": document.getElementById("trunk"),
+  "leaf-tile": document.getElementById("leaf"),
 };
 
 let index = 0;
@@ -159,9 +165,15 @@ function decorateOnClick() {
       target.className = "";
       target.classList.add("sky-tile");
       storageTiles[classname]++;
-      storageDirt.style.display = "inline-block";
+      displayStorage(classname);
     }
   });
+}
+
+function displayStorage(className) {
+  storageElements[className].style.display = "inline-block";
+  storageElements[className].textContent = storageTiles[className];
+  storageElements[className].style.color = "white";
 }
 /**
  * Get random integer in range [min, max]
