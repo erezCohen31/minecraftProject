@@ -1,15 +1,20 @@
 const main = document.querySelector("main");
-const viewport = document.getElementById("viewport");
 const tollEvent = document.getElementById("tools");
 let toolid = "";
 
-const toolsKit = { 
+const toolsKit = {
   shovel: ["dirt-tile", "dirtTop-tile"],
   axe: ["trunk-tile"],
   hoe: ["leaf-tile"],
-  pickaxe: ["rock-tile"]
+  pickaxe: ["rock-tile"],
 };
 
+const storageTiles = {
+  "dirt-tile": 0,
+  "dirtTop-tile": 0,
+  "trunk-tile": 0,
+  "leaf-tile": 0,
+};
 
 let index = 0;
 
@@ -144,12 +149,13 @@ function loadMap(matrixMap) {
 function decorateOnClick() {
   main.addEventListener("click", (event) => {
     const target = event.target;
-    const classname = target.classList;
-
+    const classname = target.className;
     const validTiles = toolsKit[toolid];
-    if (validTiles.some(tile => classname.contains(tile))) {
+    if (validTiles && validTiles.some((tile) => classname === tile)) {
       target.className = "";
       target.classList.add("sky-tile");
+      storageTiles[classname]++;
+      console.log(storageTiles);
     }
   });
 }
@@ -159,16 +165,21 @@ function decorateOnClick() {
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
-// === Run ===
-const map = generateMap();
-loadMap(map);
-decorateOnClick();
-
 function takeToolId() {
   tollEvent.addEventListener("click", (e) => {
     toolid = e.target.id;
     console.log(toolid);
   });
 }
+
+function addInstorage(classTile) {
+  storageTiles[classTile]++;
+}
+function removeToStorage(classTile) {
+  storageTiles[classTile]--;
+}
+// === Run ===
+const map = generateMap();
+loadMap(map);
+decorateOnClick();
 takeToolId();
