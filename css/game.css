@@ -7,6 +7,7 @@ html {
 
 main {
   display: grid; /* We'll use CSS Grid to place tiles */
+  position: relative;
 }
 
 div {
@@ -94,6 +95,15 @@ div:hover {
   gap: 10px;
 }
 
+.buttons{
+  position:absolute;
+  display: flex;
+  top: 20px; 
+  left: 20px; 
+  justify-content: end;
+
+
+}
 .img-tools {
   width: 25px;
   height: 25px;
