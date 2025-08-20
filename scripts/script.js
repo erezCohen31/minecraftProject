@@ -1,5 +1,10 @@
 const main = document.querySelector("main");
 const tollEvent = document.getElementById("tools");
+const storageDirt = document.getElementById("dirt");
+const storageDirtTop = document.getElementById("dirt");
+const storageLeaf = document.getElementById("dirt");
+const storageTrunk = document.getElementById("dirt");
+
 let toolid = "";
 
 const toolsKit = {
@@ -77,7 +82,6 @@ function buildTree(map, startRow, startCol) {
   const trunkHeight = getRandomInt(3, 5); // trunk height
   const canopyHeight = 6; // fixed canopy height
   const baseWidth = 6; // base width
-  const topWidth = 3; // top width
 
   // === Trunk ===
   for (let i = 0; i < trunkHeight; i++) {
@@ -155,7 +159,7 @@ function decorateOnClick() {
       target.className = "";
       target.classList.add("sky-tile");
       storageTiles[classname]++;
-      console.log(storageTiles);
+      storageDirt.style.display = "inline-block";
     }
   });
 }
