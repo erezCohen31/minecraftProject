@@ -6,7 +6,16 @@ html {
 }
 
 main {
-  display: grid; /* Initial grid display */
+  display: grid; /* We'll use CSS Grid to place tiles */
+}
+
+div {
+  /* box-sizing: border-box includes border and padding inside the element */
+  box-sizing: border-box;
+}
+div:hover {
+  border: 1px solid black;
+
 }
 
 /* Tiles styles */
