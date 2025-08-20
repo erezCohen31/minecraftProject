@@ -65,21 +65,3 @@ function loadMap(matrixMap) {
 
 const map = generateMap();
 loadMap(map);
-
-window.addEventListener("keydown", (e) => {
-  const scrollStep = TILE_SIZE;
-  switch (e.key) {
-    case "ArrowLeft":
-      viewport.scrollLeft -= scrollStep;
-      break;
-    case "ArrowRight":
-      viewport.scrollLeft += scrollStep;
-      break;
-    case "ArrowUp":
-      viewport.scrollTop -= scrollStep;
-      break;
-    case "ArrowDown":
-      viewport.scrollTop += scrollStep;
-      break;
-  }
-});
