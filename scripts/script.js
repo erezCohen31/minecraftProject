@@ -65,3 +65,15 @@ function loadMap(matrixMap) {
 
 const map = generateMap();
 loadMap(map);
+
+
+function decorateOnClick() {
+  const main = document.querySelector('main');
+
+  main.addEventListener('click', (event) => {
+    const target = event.target;
+    target.classList.add('sky');
+  });
+}
+
+
