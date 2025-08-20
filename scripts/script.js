@@ -63,23 +63,17 @@ function loadMap(matrixMap) {
   main.style.gridAutoRows = `${TILE_SIZE}px`;
 }
 
+function decorateOnClick() {
+  main.addEventListener("click", (event) => {
+    const target = event.target;
+    //remove all class
+    target.className = "";
+
+    // add the good class
+    target.classList.add("sky-tile");
+  });
+}
+
 const map = generateMap();
 loadMap(map);
-
-window.addEventListener("keydown", (e) => {
-  const scrollStep = TILE_SIZE;
-  switch (e.key) {
-    case "ArrowLeft":
-      viewport.scrollLeft -= scrollStep;
-      break;
-    case "ArrowRight":
-      viewport.scrollLeft += scrollStep;
-      break;
-    case "ArrowUp":
-      viewport.scrollTop -= scrollStep;
-      break;
-    case "ArrowDown":
-      viewport.scrollTop += scrollStep;
-      break;
-  }
-});
+decorateOnClick();
