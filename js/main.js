@@ -15,6 +15,7 @@ const savedMap = loadMap();
 // Determine whether to continue a saved game or start a new one
 if (savedMap.length > 0 && localStorage.getItem("gameState") === "continue") {
   map = savedMap; // Use the saved map
+  console.log("continue");
 } else {
   map = MapManager.generateMap(); // Generate a new map
   saveMap(map); // Save it immediately
