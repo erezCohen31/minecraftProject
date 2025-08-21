@@ -5,14 +5,17 @@ html {
   padding: 0;
 }
 
+/* Main container for the map uses CSS Grid */
 main {
-  display: grid; /* We'll use CSS Grid to place tiles */
+  display: grid;
 }
 
+/* Make all divs include border and padding inside their size */
 div {
-  /* box-sizing: border-box includes border and padding inside the element */
   box-sizing: border-box;
 }
+
+/* Storage panel styling */
 .storege {
   background-color: aliceblue;
   margin-top: 20px;
@@ -22,24 +25,16 @@ div {
   display: flex;
   flex-direction: column;
 }
+
+/* Storage tile boxes */
 .storege > div {
   margin: 3px;
   width: 30px;
   height: 30px;
-}
-#dirt {
-  display: none;
-}
-#trunk {
-  display: none;
-}
-#leaf {
-  display: none;
-}
-#dirtTop {
-  display: none;
+  display: none; /* default hidden, shown when player collects */
 }
 
+/* Side panel containing tools and storage */
 .side-elements {
   display: flex;
   flex-direction: column;
@@ -48,11 +43,12 @@ div {
   top: 20px;
 }
 
+/* Add border on hover for all divs */
 div:hover {
   border: 1px solid black;
 }
 
-/* Tiles styles */
+/* --- Tile styles --- */
 .sky-tile {
   background-color: aqua;
 }
@@ -77,6 +73,7 @@ div:hover {
   background-size: cover;
 }
 
+/* Tools panel */
 #tools {
   position: absolute;
   top: 20px;
@@ -90,6 +87,8 @@ div:hover {
   width: 25px;
   height: 25px;
 }
+
+/* --- Cursor styles --- */
 .cursor-default {
   cursor: auto;
 }
@@ -126,36 +125,32 @@ div:hover {
   cursor: url("../assets/imges/leaf_32.jpg") 16 16, auto;
 }
 
-.topButtons{
+/* Top buttons panel */
+.topButtons {
   display: flex;
   position: absolute;
-    top: 10px;
-    left: 50px;
-
+  top: 10px;
+  left: 50px;
 }
 
-#b1{
-  background-color: #A0A0A0;;
+/* Button styles */
+#b1,
+#b2 {
+  background-color: #a0a0a0;
   border-radius: 5px;
   box-shadow: 0px 3px 1px #707070;
   color: white;
-
+  transition: transform 0.2s ease;
 }
 
-#b2{
-  background-color: #A0A0A0;;
-  border-radius: 5px;
+/* Add spacing between buttons */
+#b2 {
   margin-left: 5px;
-  box-shadow: 0px 3px 1px #707070;
-  color: white;
-
 }
 
+/* Hover effect for buttons */
+#b1:hover,
 #b2:hover {
-  transform: scale(1.1);
-}
-
-#b1:hover {
   transform: scale(1.1);
 }
 

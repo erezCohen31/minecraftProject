@@ -1,53 +1,56 @@
+/* Reset default margin and make body full height */
 body {
-    margin: 0;
-    height: 100%;
-    overflow: hidden;
+  margin: 0;
+  height: 100%;
 }
 
+/* Background video styling */
 video {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video covers the whole screen */
+  z-index: -1; /* Place video behind all content */
 }
 
+/* Main container for logo and buttons */
 #container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  gap: 30px; /* Space between elements */
 }
 
+/* Logo styling */
 #logo {
-    width: 90%;
+  width: 90%;
 }
 
+/* Buttons styling */
 .buttonMenu {
-    font-size: 20px;
-    background: rgba(245, 247, 245, 0.5);
-    height: 80px;
-    width: 30%;
-    border: none;
-    border-radius: 30px;
-
+  font-size: 20px;
+  background: rgba(245, 247, 245, 0.5); /* Semi-transparent background */
+  height: 80px;
+  width: 30%;
+  border: none;
+  border-radius: 30px;
 }
 
+/* Responsive adjustments for medium screens */
 @media (max-width: 900px) {
-    .buttonMenu {
-        height: 60px;
-        width: 35%;
-        font-size: 18px;
-    }
+  .buttonMenu {
+    height: 60px;
+    width: 35%;
+    font-size: 18px;
+  }
 }
 
+/* Responsive adjustments for small screens */
 @media (max-width: 400px) {
-    
-    .buttonMenu {
-        height: 60px;
-        width: 35%;
-        font-size: 16px;
-    }
+  .buttonMenu {
+    height: 60px;
+    width: 35%;
+    font-size: 16px;
+  }
 }

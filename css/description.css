@@ -1,37 +1,38 @@
-body{
-    background-image: url(https://wallpapercave.com/wp/wp5961273.jpg);
-     background-size: 120%;
+/* Body background */
+body {
+  background-image: url(https://wallpapercave.com/wp/wp5961273.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Keep background fixed while scrolling */
+      background-size: 120%;
       animation: moveBackground 60s ease infinite;
     backdrop-filter: blur(4px);
 }
 
-
-h1{
-    color: rgb(98, 91, 91);
-    font-size:xx-large;
-    text-align: center;
-    margin-right: 70px;
+/* Title styling */
+h1 {
+  color: rgb(86, 78, 78);
+  font-size: xx-large;
+  text-align: center;
+  margin-right: 70px; /* Adds space to the right */
+  margin-top: 20px; /* Optional: add some top margin */
 }
 
-#des{
-    width: 50%;
-    font-size: large;
-    margin-top: 60px;
-    margin-left: 360px;
-    font-family: 'Georgia', serif;
-    color:rgb(219, 235, 240);
-    
-
+/* Description paragraph */
+#des {
+  width: 50%; /* Half of the page width */
+  font-size: large;
+  margin-top: 60px;
+  margin-left: 360px; /* Pushes the paragraph to the right */
+  font-family: "Georgia", serif; /* Elegant serif font */
+  line-height: 1.6; /* Improve readability */
 }
-
-  @keyframes moveBackground {
+ @keyframes moveBackground {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-
-#reserved{
+    #reserved{
     margin-right: 50px;
 }
 
