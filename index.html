@@ -1,43 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Minecraft Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/index.css" />
-    <script src="./js/index.js" defer></script>
-  </head>
 
-  <body>
-    <video id="bgVideo" autoplay muted loop>
-      <source src="./assets/video/background.mp4" type="video/mp4" />
-    </video>
-    <div id="container">
-      <div>
-        <img
-          id="logo"
-          src="./assets/imges/logo-removebg-preview.png"
-          alt="Logo"
-        />
-      </div>
-      <button
-        class="buttonMenu"
-        onclick="window.location.href='./pages/game.html'"
-      >
-        התחל משחק
-      </button>
-      <button
-        class="buttonMenu"
-        onclick="window.location.href='your-link.html'"
-      >
-        המשך משחק
-      </button>
-      <button
-        class="buttonMenu"
-        onclick="window.location.href='pages/description.html'"
-      >
-        הוראות משחק
-      </button>
+<head>
+  <meta charset="UTF-8" />
+  <title>Minecraft Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <script src="./js/index.js" defer></script>
+</head>
+
+<body>
+  <video id="bgVideo" autoplay muted loop>
+    <source src="./assets/video/background.mp4" type="video/mp4" />
+  </video>
+  <audio autoplay loop>
+    <source src="./assets/audio/audiohome (1).mp3" type="audio/mpeg">
+    
+  </audio>
+
+  <div id="container">
+    <div>
+      <img id="logo" src="./assets/imges/logo-removebg-preview.png" alt="Logo" />
     </div>
-  </body>
+    <button class="buttonMenu" onclick="window.location.href='./pages/game.html'">
+      התחל משחק
+    </button>
+    <button class="buttonMenu" onclick="window.location.href='your-link.html'">
+      המשך משחק
+    </button>
+    <button class="buttonMenu" onclick="window.location.href='pages/description.html'">
+      הוראות משחק
+    </button>
+  </div>
+</body>
+
 </html>
