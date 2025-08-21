@@ -5,14 +5,17 @@
     <title>Minecraft Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/index.css" />
-    <script src="./js/index.js" defer></script>
+    <script type="module" src="./js/index.js" defer></script>
   </head>
 
   <body>
+    <!-- Background video -->
     <video id="bgVideo" autoplay muted loop>
       <source src="./assets/video/background.mp4" type="video/mp4" />
     </video>
+
     <div id="container">
+      <!-- Logo -->
       <div>
         <img
           id="logo"
@@ -20,23 +23,27 @@
           alt="Logo"
         />
       </div>
+
+      <!-- New Game button: clears previous map and starts a new game -->
       <button
         class="buttonMenu"
-        onclick="window.location.href='./pages/game.html'"
+        onclick="
+          localStorage.removeItem('mapGeneral'); 
+          window.location.href='pages/game.html';
+        "
       >
-        התחל משחק
+        New Game
       </button>
-      <button
-        class="buttonMenu"
-        onclick="window.location.href='your-link.html'"
-      >
-        המשך משחק
-      </button>
+
+      <!-- Continue Game button: loads map from localStorage -->
+      <button id="continueGameBtn" class="buttonMenu">Continue Game</button>
+
+      <!-- Game instructions -->
       <button
         class="buttonMenu"
         onclick="window.location.href='pages/description.html'"
       >
-        הוראות משחק
+        Description
       </button>
     </div>
   </body>

@@ -7,34 +7,39 @@
     <link rel="stylesheet" href="../css/game.css" />
   </head>
   <body>
-    <!-- Map container -->
+    <!-- Main map container -->
     <main id="map-container"></main>
 
     <section class="side-elements">
-      <!-- Tools selection -->
+      <!-- Tools selection panel -->
       <section id="tools">
         <img
           id="axe"
           class="img-tools"
           src="../assets/imges/Axe.png"
-          alt="axe"
+          alt="Axe"
         />
-        <img id="hoe" class="img-tools" src="../assets/imges/Hoe.png" alt="" />
+        <img
+          id="hoe"
+          class="img-tools"
+          src="../assets/imges/Hoe.png"
+          alt="Hoe"
+        />
         <img
           id="shovel"
           class="img-tools"
           src="../assets/imges/Shovel.png"
-          alt=""
+          alt="Shovel"
         />
         <img
           id="pickaxe"
           class="img-tools"
           src="../assets/imges/Pickaxe.png"
-          alt=""
+          alt="Pickaxe"
         />
       </section>
 
-      <!-- Storage section -->
+      <!-- Player storage for collected tiles -->
       <section class="storege">
         <div id="dirt" class="dirt-tile"></div>
         <div id="trunk" class="trunk-tile"></div>
@@ -42,15 +47,18 @@
         <div id="dirtTop" class="dirtTop-tile"></div>
       </section>
 
-      <!-- Top buttons -->
+      <!-- Top buttons: Menu and New Game -->
       <section class="topButtons">
         <a href="../index.html">
           <button id="menuBtn">Menu</button>
         </a>
-        <button id="newGameBtn">New Game</button>
+        <button id="newGameBtn" onclick="window.location.reload()">
+          New Game
+        </button>
       </section>
     </section>
 
+    <!-- Main game JS module -->
     <script type="module" src="../js/main.js"></script>
   </body>
 </html>
