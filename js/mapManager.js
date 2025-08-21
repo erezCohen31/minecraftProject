@@ -1,4 +1,5 @@
 import { getRandomInt } from "./utils.js";
+import { saveMap } from "./utils.js";
 
 export const MapManager = {
   MAP_COLS: 50,
@@ -24,6 +25,8 @@ export const MapManager = {
       map.push(row);
     }
     this.generateTrees(map, skyRow);
+    // Save the map immediately
+    saveMap(map);
     return map;
   },
 
@@ -61,7 +64,7 @@ export const MapManager = {
     for (let i = 0; i < matrixMap.length; i++) {
       for (let j = 0; j < matrixMap[i].length; j++) {
         const tile = document.createElement("div");
-        tile.id = `tile-${this.tileIndex++}`;
+        tile.id = `tile-${i}-${j}`;
         tile.style.gridRow = i + 1;
         tile.style.gridColumn = j + 1;
         tile.style.width = `${this.TILE_SIZE}px`;
