@@ -51,7 +51,6 @@ export const InteractionManager = {
       this.selectedTool = toolId;
       this.selectedTileClass = "";
       this.updateCursor();
-      console.log("Selected tool:", this.selectedTool);
     });
 
     // --- Select a tile from storage ---
@@ -61,7 +60,6 @@ export const InteractionManager = {
       this.selectedTileClass = tileClass;
       this.selectedTool = "";
       this.updateCursor();
-      console.log("Selected tile:", this.selectedTileClass);
     });
   },
 
