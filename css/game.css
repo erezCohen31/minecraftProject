@@ -13,6 +13,41 @@ div {
   /* box-sizing: border-box includes border and padding inside the element */
   box-sizing: border-box;
 }
+.storege {
+  background-color: aliceblue;
+  margin-top: 20px;
+  position: absolute;
+  top: 170px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.storege > div {
+  margin: 3px;
+  width: 30px;
+  height: 30px;
+}
+#dirt {
+  display: none;
+}
+#trunk {
+  display: none;
+}
+#leaf {
+  display: none;
+}
+#dirtTop {
+  display: none;
+}
+
+.side-elements {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 2;
+  top: 20px;
+}
+
 div:hover {
   border: 1px solid black;
 }
@@ -48,17 +83,47 @@ div:hover {
   left: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px; 
+  gap: 10px;
+}
 
-}
-button {
-  background-color: #00ffff;
-  border: none;
-  padding: 10px;
-}
 .img-tools {
   width: 25px;
   height: 25px;
+}
+.cursor-default {
+  cursor: auto;
+}
+
+.cursor-axe {
+  cursor: url("../assets/imges/Axe_32.png") 16 16, auto;
+}
+
+.cursor-shovel {
+  cursor: url("../assets/imges/Shovel_32.png") 16 16, auto;
+}
+
+.cursor-hoe {
+  cursor: url("../assets/imges/Hoe_32.png") 16 16, auto;
+}
+
+.cursor-pickaxe {
+  cursor: url("../assets/imges/Pickaxe_32.png") 16 16, auto;
+}
+
+.cursor-dirt {
+  cursor: url("../assets/imges/dirt_32.jpg") 16 16, auto;
+}
+
+.cursor-dirtTop {
+  cursor: url("../assets/imges/dirtTop_32.jpg") 16 16, auto;
+}
+
+.cursor-trunk {
+  cursor: url("../assets/imges/trunk_32.jpg") 16 16, auto;
+}
+
+.cursor-leaf {
+  cursor: url("../assets/imges/leaf_32.jpg") 16 16, auto;
 }
 
 .topButtons{
