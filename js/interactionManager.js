@@ -1,10 +1,10 @@
 import { ToolManager } from "./toolsManager.js";
 import { StorageManager } from "./storageManager.js";
-import { getTileCoordinates, updateTile, mapGeneral } from "./utils.js";
+import { getTileCoordinates, updateTile } from "./utils.js";
 
 export const InteractionManager = {
-  selectedTool: "",
-  selectedTileClass: "",
+  selectedTool: "", // Currently selected tool
+  selectedTileClass: "", // Currently selected tile from storage
 
   setupInteractions(main, toolsContainer, storage) {
     // --- Click on map tiles ---
@@ -13,12 +13,12 @@ export const InteractionManager = {
       const tileClass = target.className;
       const { i, j } = getTileCoordinates(target.id);
 
-      // Mining a tile with the selected tool
+      // Mining a tile using the selected tool
       const validTiles = ToolManager.toolsKit[this.selectedTool];
       if (validTiles && validTiles.includes(tileClass)) {
-        target.className = "sky-tile";
-        updateTile(i, j, "s"); // updates mapGeneral and localStorage
-        StorageManager.updateStorage(tileClass, +1);
+        target.className = "sky-tile"; // Change tile to sky
+        updateTile(i, j, "s"); // Update mapGeneral and localStorage
+        StorageManager.updateStorage(tileClass, +1); // Add to storage
       }
       // Placing a tile from storage
       else if (
@@ -27,7 +27,7 @@ export const InteractionManager = {
       ) {
         target.className = this.selectedTileClass;
 
-        // Map symbol corresponding to the tile class
+        // Determine the symbol to update in the map array
         const newValue =
           this.selectedTileClass === "dirt-tile"
             ? "d"
@@ -39,35 +39,33 @@ export const InteractionManager = {
             ? "l"
             : "s";
 
-        updateTile(i, j, newValue);
-        StorageManager.updateStorage(this.selectedTileClass, -1);
+        updateTile(i, j, newValue); // Update mapGeneral and localStorage
+        StorageManager.updateStorage(this.selectedTileClass, -1); // Remove from storage
       }
     });
 
     // --- Select a tool ---
     toolsContainer.addEventListener("click", (event) => {
       const toolId = event.target.id;
-      if (!ToolManager.toolsKit[toolId]) return; // ignore invalid clicks
+      if (!ToolManager.toolsKit[toolId]) return; // Ignore invalid clicks
       this.selectedTool = toolId;
       this.selectedTileClass = "";
       this.updateCursor();
-      console.log("Selected tool:", this.selectedTool);
     });
 
     // --- Select a tile from storage ---
     storage.addEventListener("click", (event) => {
       const tileClass = event.target.className;
-      if (!StorageManager.storageTiles[tileClass]) return; // ignore empty clicks
+      if (!StorageManager.storageTiles[tileClass]) return; // Ignore empty clicks
       this.selectedTileClass = tileClass;
       this.selectedTool = "";
       this.updateCursor();
-      console.log("Selected tile:", this.selectedTileClass);
     });
   },
 
-  // --- Update cursor dynamically ---
+  // --- Update cursor dynamically based on selection ---
   updateCursor() {
-    document.body.className = ""; // reset previous cursor
+    document.body.className = ""; // Reset previous cursor
 
     const type = this.selectedTool || this.selectedTileClass;
 
@@ -83,9 +81,5 @@ export const InteractionManager = {
     };
 
     document.body.classList.add(cursorMap[type] || "cursor-default");
-
-    // Debug logs
-    console.log("Cursor updated to:", cursorMap[type] || "cursor-default");
-    console.log("Current selection:", type);
   },
 };

@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Minecraft Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script type="module" src="./js/index.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <title>Minecraft Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./css/index.css" />
-  <script src="./js/index.js" defer></script>
-</head>
+  <body>
+    <!-- Background video -->
+    <video id="bgVideo" autoplay muted loop>
+      <source src="./assets/video/background.mp4" type="video/mp4" />
+    </video>
+<audio src=".//assets/audio/audiohome.mp3" autoplay loop></audio>
+    <div id="container">
+      <!-- Logo -->
+      <div>
+        <img
+          id="logo"
+          src="./assets/imges/logo-removebg-preview.png"
+          alt="Logo"
+        />
+      </div>
 
-<body>
-  <video id="bgVideo" autoplay muted loop>
-    <source src="./assets/video/background.mp4" type="video/mp4" />
-  </video>
-  <audio src="./assets/audio/audiohome.mp3"autoplay loop></audio>
-  <div id="container">
-    <div>
-      <img id="logo" src="./assets/imges/logo-removebg-preview.png" alt="Logo" />
+      <!-- New Game button: clears previous map and starts a new game -->
+      <button
+        class="buttonMenu"
+        onclick="
+          window.location.href='pages/game.html';
+        "
+      >
+        New Game
+      </button>
+
+      <!-- Continue Game button: loads map from localStorage -->
+      <button id="continueGameBtn" class="buttonMenu">Continue Game</button>
+
+      <!-- Game instructions -->
+      <button
+        class="buttonMenu"
+        onclick="window.location.href='pages/description.html'"
+      >
+        Description
+      </button>
     </div>
-    <button class="buttonMenu" onclick="window.location.href='./pages/game.html'">
-      התחל משחק
-    </button>
-    <button class="buttonMenu" onclick="window.location.href='your-link.html'">
-      המשך משחק
-    </button>
-    <button class="buttonMenu" onclick="window.location.href='pages/description.html'">
-      הוראות משחק
-    </button>
-  </div>
-</body>
-
+  </body>
 </html>
