@@ -2,11 +2,12 @@ body{
     background-image: url(https://wallpapercave.com/wp/wp5961273.jpg);
      background-size: 120%;
       animation: moveBackground 60s ease infinite;
-
+    backdrop-filter: blur(4px);
 }
 
+
 h1{
-    color: rgb(86, 78, 78);
+    color: rgb(98, 91, 91);
     font-size:xx-large;
     text-align: center;
     margin-right: 70px;
@@ -18,7 +19,7 @@ h1{
     margin-top: 60px;
     margin-left: 360px;
     font-family: 'Georgia', serif;
-    color:darkgray;
+    color:rgb(219, 235, 240);
     
 
 }
@@ -28,3 +29,16 @@ h1{
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+
+#reserved{
+    margin-right: 50px;
+}
+
+#backBtn{
+    padding: 0.8%;
+    background-color: lightgray;
+    border-radius: 3px;
+    font-weight: bold;
+    color:rgb(74, 69, 62);
+}
