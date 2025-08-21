@@ -1,9 +1,11 @@
 /* Body background */
 body {
   background-image: url(https://wallpapercave.com/wp/wp5961273.jpg);
-  background-size: cover; /* Ensure the image covers the whole screen */
   background-repeat: no-repeat;
   background-attachment: fixed; /* Keep background fixed while scrolling */
+      background-size: 120%;
+      animation: moveBackground 60s ease infinite;
+    backdrop-filter: blur(4px);
 }
 
 /* Title styling */
@@ -23,4 +25,21 @@ h1 {
   margin-left: 360px; /* Pushes the paragraph to the right */
   font-family: "Georgia", serif; /* Elegant serif font */
   line-height: 1.6; /* Improve readability */
+}
+ @keyframes moveBackground {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #reserved{
+    margin-right: 50px;
+}
+
+#backBtn{
+    padding: 0.8%;
+    background-color: lightgray;
+    border-radius: 3px;
+    font-weight: bold;
+    color:rgb(74, 69, 62);
 }
