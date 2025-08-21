@@ -1,5 +1,7 @@
 import { ToolManager } from "./toolsManager.js";
 import { StorageManager } from "./storageManager.js";
+import { mapGeneral } from "./map.js";
+import { getTileCoordinates } from "./utils.js";
 
 export const InteractionManager = {
   selectedTool: "",
@@ -11,10 +13,12 @@ export const InteractionManager = {
       const target = event.target;
       const tileClass = target.className;
       const validTiles = ToolManager.toolsKit[this.selectedTool];
+      const { i, j } = getTileCoordinates(target.id);
 
       // Mine tile
       if (validTiles && validTiles.includes(tileClass)) {
         target.className = "sky-tile";
+        mapGeneral[i][j] = "s";
         StorageManager.updateStorage(tileClass, +1);
       }
       // Place tile from storage
@@ -23,6 +27,17 @@ export const InteractionManager = {
         StorageManager.storageTiles[this.selectedTileClass] > 0
       ) {
         target.className = this.selectedTileClass;
+        mapGeneral[i][j] =
+          this.selectedTileClass === "dirt-tile"
+            ? "d"
+            : this.selectedTileClass === "dirtTop-tile"
+            ? "dt"
+            : this.selectedTileClass === "trunk-tile"
+            ? "t"
+            : this.selectedTileClass === "leaf-tile"
+            ? "l"
+            : "s";
+
         StorageManager.updateStorage(this.selectedTileClass, -1);
       }
     });
