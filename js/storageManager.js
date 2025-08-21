@@ -16,22 +16,27 @@ export const StorageManager = {
     "leaf-tile": document.getElementById("leaf"),
   },
 
-  // Update the storage count for a tile type
-  // delta can be positive (add) or negative (remove)
+  // Update the storage count for a specific tile type
+  // delta: positive to add, negative to remove
   updateStorage(tileClass, delta = 0) {
+    // Update the count in memory
     if (delta !== 0) {
       this.storageTiles[tileClass] += delta;
     }
 
     const count = this.storageTiles[tileClass];
 
-    // Update the display depending on count
+    // Update the visual display
     if (count > 0) {
-      this.storageElements[tileClass].style.display = "inline-block";
-      this.storageElements[tileClass].textContent = count;
-      this.storageElements[tileClass].style.color = "white";
+      const element = this.storageElements[tileClass];
+      element.style.display = "inline-block";
+      element.textContent = count;
+      element.style.color = "white";
     } else {
       this.storageElements[tileClass].style.display = "none";
     }
+
+    // Persist storage to localStorage
+    localStorage.setItem("storageTiles", JSON.stringify(this.storageTiles));
   },
 };
