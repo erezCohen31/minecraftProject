@@ -1,5 +1,8 @@
 body{
     background-image: url(https://wallpapercave.com/wp/wp5961273.jpg);
+     background-size: 120%;
+      animation: moveBackground 60s ease infinite;
+
 }
 
 h1{
@@ -15,5 +18,13 @@ h1{
     margin-top: 60px;
     margin-left: 360px;
     font-family: 'Georgia', serif;
+    color:darkgray;
+    
 
 }
+
+  @keyframes moveBackground {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
