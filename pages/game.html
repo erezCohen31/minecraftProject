@@ -3,73 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>game</title>
+    <title>Game</title>
     <link rel="stylesheet" href="../css/game.css" />
   </head>
   <body>
+    <!-- Map container -->
     <main id="map-container"></main>
+
     <section class="side-elements">
+      <!-- Tools selection -->
       <section id="tools">
-        <div>
-          <img
-            id="axe"
-            class="img-tools"
-            src="../assets/imges/Axe.png"
-            alt="axe"
-          />
-        </div>
-        <div>
-          <img
-            id="hoe"
-            class="img-tools"
-            src="../assets/imges/Hoe.png"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            id="shovel"
-            class="img-tools"
-            src="../assets/imges/Shovel.png"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            id="pickaxe"
-            class="img-tools"
-            src="../assets/imges/Pickaxe.png"
-            alt=""
-          />
-        </div>
+        <img
+          id="axe"
+          class="img-tools"
+          src="../assets/imges/Axe.png"
+          alt="axe"
+        />
+        <img id="hoe" class="img-tools" src="../assets/imges/Hoe.png" alt="" />
+        <img
+          id="shovel"
+          class="img-tools"
+          src="../assets/imges/Shovel.png"
+          alt=""
+        />
+        <img
+          id="pickaxe"
+          class="img-tools"
+          src="../assets/imges/Pickaxe.png"
+          alt=""
+        />
       </section>
 
+      <!-- Storage section -->
       <section class="storege">
         <div id="dirt" class="dirt-tile"></div>
         <div id="trunk" class="trunk-tile"></div>
         <div id="leaf" class="leaf-tile"></div>
         <div id="dirtTop" class="dirtTop-tile"></div>
       </section>
-      <main id="map-container">
-      </main>
 
-  <section class="topButtons">
-  <a href="../index.html">
-  <button id="b1">Menu</button>
-  </a>
-  
-  <button onclick="location.reload()" id="b2">New Game</button>
-  </section>
-
-    <section id="tools">
-        <img  id="axe"class="img-tools" src="../assets/imges/Axe.png" alt="axe">
-        <img  id="hoe"class="img-tools" src="../assets/imges/Hoe.png" alt="">
-        <img id="shovel" class="img-tools" src="../assets/imges/Shovel.png" alt="">
-        <img id="pickaxe" class="img-tools" src="../assets/imges/Pickaxe.png" alt="">
-
+      <!-- Top buttons -->
+      <section class="topButtons">
+        <a href="../index.html">
+          <button id="menuBtn">Menu</button>
+        </a>
+        <button id="newGameBtn">New Game</button>
+      </section>
     </section>
 
-    <section id="buttons"></section>
+    <script type="module" src="../js/main.js"></script>
   </body>
-  <script type="module" src="../js/main.js"></script>
 </html>

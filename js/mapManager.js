@@ -1,5 +1,5 @@
 import { getRandomInt } from "./utils.js";
-import { mapGeneral } from "./map.js";
+import { saveMap } from "./utils.js";
 
 export const MapManager = {
   MAP_COLS: 50,
@@ -25,7 +25,8 @@ export const MapManager = {
       map.push(row);
     }
     this.generateTrees(map, skyRow);
-    mapGeneral = map;
+    // Save the map immediately
+    saveMap(map);
     return map;
   },
 
