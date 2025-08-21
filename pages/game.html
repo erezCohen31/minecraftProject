@@ -9,7 +9,7 @@
   <body>
     <!-- Main map container -->
     <main id="map-container"></main>
-
+    <audio src="../assets/audio/audioGame.mp3" autoplay loop></audio>
     <section class="side-elements">
       <!-- Tools selection panel -->
       <section id="tools">
@@ -49,12 +49,8 @@
 
       <!-- Top buttons: Menu and New Game -->
       <section class="topButtons">
-        <a href="../index.html">
-          <button id="menuBtn">Menu</button>
-        </a>
-        <button id="newGameBtn" onclick="window.location.reload()">
-          New Game
-        </button>
+        <button class="menu" onclick="location.href='../index.html'">menu</button>
+        <button class="menu" onclick="window.location.reload()">New Game</button>
       </section>
     </section>
 
